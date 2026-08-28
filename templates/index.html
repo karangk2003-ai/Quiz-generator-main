@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard card glassmorphism fade-in">
+    <div class="dashboard-header text-center">
+        <h2>Generate Your Quiz with Groq AI ⚡</h2>
+        <p>Upload any PDF, DOCX, or TXT document and generate instant AI-powered quizzes at lightning speed.</p>
+    </div>
+
+    <div class="bento-grid split mt-20">
+        <!-- Left Side: Upload -->
+        <div class="upload-section">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="file-drop-area" id="dropArea">
+                    <span class="upload-icon">📄</span>
+                    <span class="file-msg">Drag & Drop or Click to Upload Document</span>
+                    <span class="file-submsg">Supported: PDF, DOCX, TXT</span>
+                    <input class="file-input" type="file" id="file" name="file" accept=".pdf,.docx,.txt" required>
+                </div>
+                <div id="fileInfo" class="hidden file-info">
+                    <span id="fileName"></span>
+                    <button type="button" id="removeFileBtn" class="btn-icon">❌</button>
+                </div>
+                
+                <button type="submit" class="btn primary-btn mt-20" id="uploadBtn">Upload & Process Document</button>
+            </form>
+            <div id="uploadStatus" class="status-msg hidden"></div>
+        </div>
+
+        <!-- Right Side: Config -->
+        <div id="quizConfigSection" class="config-section hidden fade-in">
+            <div class="config-card">
+                <h3>Quiz Configuration</h3>
+                <form id="configForm" class="mt-10">
+                    <input type="hidden" id="documentId" name="document_id">
+                    
+                    <div class="api-key-banner mb-20">
+                        <label for="groqApiKey">🔑 <strong>Groq API Key (Required):</strong></label>
+                        <div class="api-key-input-wrapper">
+                            <input type="password" id="groqApiKey" class="form-control" placeholder="gsk_..." required>
+                            <button type="button" id="toggleKeyVisibility" class="btn-toggle-key" title="Show/Hide Key">👁️</button>
+                        </div>
+                        <small class="api-key-hint">Get a free key at <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="num_questions">Number of Questions:</label>
+                        <select id="num_questions" name="num_questions" class="form-control">
+                            <option value="5">5 Questions</option>
+                            <option value="10">10 Questions</option>
+                            <option value="15">15 Questions</option>
+                            <option value="20">20 Questions</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty Level:</label>
+                        <select id="difficulty" name="difficulty" class="form-control">
+                            <option value="Easy">Easy</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="topic">Specific Focus Topic (Optional):</label>
+                        <input type="text" id="topic" name="topic" class="form-control" placeholder="e.g., Supervised Learning, Chapter 3...">
+                    </div>
+                    
+                    <button type="submit" class="btn generate-btn mt-20 primary-btn" id="generateBtn">Generate Quiz with Groq ⚡</button>
+                </form>
+                <div id="generateStatus" class="status-msg hidden"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
