@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="result-container card glassmorphism fade-in hidden" id="resultInterface">
+    <div class="result-header text-center">
+        <h2>Quiz Results</h2>
+        <div class="score-circle">
+            <span id="scoreText" class="score-val">0</span>
+            <span class="score-percent" id="scorePercent">0%</span>
+        </div>
+        <h3 id="passStatus" class="status-pass mt-10">Pass</h3>
+        <p class="summary-text mt-10">You got <span id="correctAnswers">0</span> out of <span id="totalQuestions">0</span> correct.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="review-section">
+        <h3>Detailed Review</h3>
+        <div id="reviewContainer">
+            <!-- Review items injected by JS -->
+        </div>
+    </div>
+    
+    <div class="text-center mt-20">
+        <a href="/" class="btn primary-btn">Generate Another Quiz</a>
+    </div>
+</div>
+<div id="loadingMsg" class="loading-container fade-in">
+    <div class="spinner"></div>
+    <p>Evaluating your answers...</p>
+</div>
+{% endblock %}
