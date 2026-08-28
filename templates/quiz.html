@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="quiz-container card glassmorphism fade-in hidden" id="quizInterface">
+    <div class="quiz-header">
+        <h2 id="quizTitle">Quiz Time</h2>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p class="progress-text">Question <span id="currentQNum">1</span> of <span id="totalQNum">0</span></p>
+    </div>
+
+    <form id="quizForm">
+        <div id="questionsContainer">
+            <!-- Questions injected here by JS -->
+        </div>
+
+        <div class="quiz-navigation mt-20">
+            <button type="button" class="btn secondary-btn hidden" id="prevBtn">Previous</button>
+            <button type="button" class="btn primary-btn" id="nextBtn">Next</button>
+            <button type="submit" class="btn submit-btn hidden" id="submitQuizBtn">Submit Quiz</button>
+        </div>
+    </form>
+</div>
+<div id="loadingMsg" class="loading-container fade-in">
+    <div class="spinner"></div>
+    <p>Loading your quiz... Good luck!</p>
+</div>
+{% endblock %}
